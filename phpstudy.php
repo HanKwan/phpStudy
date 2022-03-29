@@ -114,7 +114,7 @@
         echo __DIR__; // print out the location file
 
         // Switch - case 
-        $role = 'thief';
+        $role = 'thief';           // role must be written at start
         switch ($role) {
             case 'manager': echo 'manager';
             break;
