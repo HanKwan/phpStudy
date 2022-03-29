@@ -7,27 +7,14 @@
     <title>Restudy php with git</title>
 </head>
 <body>
-    <form action="restudy.php" method="POST">
-        <input type="number" name="num1">
-        <input type="text" name="oprt">
-        <input type="number" name="num2">
-        <input type="submit">
-    </form>
     <?php
-        $num1 = $_POST['num1'];
-        $oprt = $_POST['oprt'];
-        $num2 = $_POST['num2'];
-        if ($oprt === '+') {
-            echo $num1 + $num2;
-        } else if ($oprt === '-') {
-            echo $num1 - $num2;
-        } else if ($oprt === '/') {
-            echo $num1 / $num2;
-        } else if ($oprt === '*') {
-            echo $num1 * $num2;
-        } else {
-            echo 'Invalid enter';
-        }
+        include_once("temporary.php");
+        include_once("temporary1.php");
+
+        $movie1 = new Amovie("Adventure End game", "4.5", 2019);
+        $movie1->putBadR("poor iron man");
+        echo $movie1->filmTime;
+        echo $movie1->getBadR();
     ?>
 </body>
 </html>
