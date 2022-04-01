@@ -1,7 +1,10 @@
 <?php
-    $pdo = new PDO('mysql:host=localhost;port=3306;dbname=product_crud', 'root', '');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo 'hello';
+    // $pdo = new PDO('mysql:host=localhost;port=3306;dbname=product_crud', 'root', '');
+    // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // $statement = $pdo->prepare('SELECT * FROM products ORDER BY create_date DESC');
+    // $statement->execute();
+    // $product = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +18,7 @@
 </head>
 <body>
     <h1>Product crud</h1>
+    <a href="create.php"></a>
 <table class="table">
   <thead>
     <tr>
@@ -28,14 +32,16 @@
   </thead>
   <tbody>
       <?php 
-      
-      ?>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
+        foreach($product as $i => $product) { ?>
+          <tr>
+            <th scope="row"><?php echo $i + 1 ?></th>
+            <td><?php echo $product['title'] ?></td>
+            <td><?php echo $product['description'] ?></td>
+            <td><?php echo $product['image'] ?></td>
+            <td><?php echo $product['prize'] ?></td>
+            <td><?php echo $product['create_date'] ?></td>
+          </tr>
+      <?php  } ?>
   </tbody>
 </table>
 </body>
