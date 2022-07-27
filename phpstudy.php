@@ -25,8 +25,8 @@
     <?php 
 
         // connecting mysqladmin to php
-        $pdo = new PDO('mysql:host=localhost;port=3306;dbname=something_something', 'root', '');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // $pdo = new PDO('mysql:host=localhost;port=3306;dbname=something_something', 'root', '');
+        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //simple calcu
          $num1 = $_POST["num1"];
@@ -135,13 +135,18 @@
         }
         
         //function + sum
-        function sum(...$num){
-            $sum = 0;
-            foreach ($num as $num){
-                $sum += $num;
-            } return $sum;
+        function sum(...$nums){
+            $total = 0;
+            foreach ($nums as $num){
+                $total += $num;
+            } return $total;
         }
         echo sum(1, 2, 3, 4, 5, 6).'<br>';
+        // $nums = [1,2,3,4,5,6];
+        // $total = 0;
+        // foreach($nums as $num) {
+        //     $total += $num;
+        // } echo $total.'<br>';
 
         //date
         echo date('F j Y, H:i:s').'<br>'; 
