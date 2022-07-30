@@ -25,8 +25,14 @@
     <?php 
 
         // connecting mysqladmin to php
-        // $pdo = new PDO('mysql:host=localhost;port=3306;dbname=something_something', 'root', '');
-        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo = new PDO('mysql:host=localhost;port=3306;dbname=citymallpj', 'root', 'hankwansaing');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $pdo->prepare('SELECT * FROM brands');
+        $stmt->execute();
+        $brands = $stmt->fetchAll(PDO::FETCH_OBJ);
+        foreach ($brands as $brand) {
+            echo $brand->brand_name. ' ';
+        }
 
         //simple calcu
          $num1 = $_POST["num1"];
