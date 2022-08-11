@@ -218,6 +218,25 @@
                     $current->next = $node;
                 }
             }
+            public function insertIndex($data, $index) {
+                if ($index > 0 && $index > $this->count) {
+                    return;
+                } else if ($index === 0) {
+                    return $this->insertFirst($data);
+                } else {
+                    $node = new Node($data);
+                    $current = $this->head;
+                    $cd = 0;
+                    while ($cd < $index) {
+                        $previous = $current;
+                        $cd++;
+                        $current = $previous->next;         // idk why its red but it still works
+                    }
+                    $previous->next = $node;
+                    $node->next = $current;
+                    $this->count++;
+                }
+            }
             public function printList() {
                 $current = $this->head;
                 if ($current) {
@@ -235,6 +254,8 @@
         $list1->insertFirst(100);
         $list1->insertFirst(200);
         $list1->insertLast(300);
+        $list1->insertIndex(400,1);
+        $list1->insertIndex(500,2);
         echo $list1->printList();
     ?>
 </body>
