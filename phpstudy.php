@@ -168,18 +168,74 @@
         // echo $result;
         
         //making post request
-        $resource = curl_init();
-        curl_setopt_array($resource, [
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST => true,
-            CURLOPT_HTTPHEADER => ['content-type: application/json'],
-            CURLOPT_POSTFIELDS => json_encode($person)
-        ]);
-        $result = curl_exec($resource);
-        curl_close($resource);
-        echo $result;
+        // $resource = curl_init();
+        // curl_setopt_array($resource, [
+        //     CURLOPT_URL => $url,
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_POST => true,
+        //     CURLOPT_HTTPHEADER => ['content-type: application/json'],
+        //     CURLOPT_POSTFIELDS => json_encode($person)
+        // ]);
+        // $result = curl_exec($resource);
+        // curl_close($resource);
+        // echo $result;
 
+
+        // trying linked list :)
+        class Node {
+            public $data;
+            public $next;
+            public function __construct($data) {
+                $this->data = $data;
+                $this->next = null;
+            }
+        }
+        class Linkedlist {
+            public $head;
+            public $tail;
+            public $count;
+            public function __construct() {
+                $this->head = null;
+                $this->tail = null;
+                $this->count = 0;
+            }
+            public function insertFirst($data) {
+                $node = new Node($data);        // don't $this->head = new Node($data) ~_~
+                $node->next = $this->head;
+                $this->head = $node;
+                $this->count++;
+            }
+            public function insertLast($data) {
+                $node = new Node($data);
+                $current = '';
+                if (!$this->head) {
+                    $this->head = $node;
+                } else {
+                    $current = $this->head;
+                    while ($current->next) {            // to prevent from replacing the 2nd value
+                        $current = $current->next;      // put empty $current into head->next 
+                    }
+                    $current->next = $node;
+                }
+            }
+            public function printList() {
+                $current = $this->head;
+                if ($current) {
+                    while ($current) {
+                        echo $current->data . " ";
+                        $current = $current->next;
+                    }
+                } else {
+                    echo 'The list is empty';
+                }
+            }
+        }
+
+        $list1 = new Linkedlist();
+        $list1->insertFirst(100);
+        $list1->insertFirst(200);
+        $list1->insertLast(300);
+        echo $list1->printList();
     ?>
 </body>
 </html>
