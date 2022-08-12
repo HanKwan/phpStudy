@@ -207,15 +207,15 @@
             }
             public function insertLast($data) {
                 $node = new Node($data);
-                $current = '';
                 if (!$this->head) {
                     $this->head = $node;
                 } else {
                     $current = $this->head;
                     while ($current->next) {            // to prevent from replacing the 2nd value
-                        $current = $current->next;      // put empty $current into head->next 
+                        $current = $current->next;      // put $current->next into head->next 
                     }
                     $current->next = $node;
+                    $this->count++;
                 }
             }
             public function insertIndex($data, $index) {
@@ -226,16 +226,59 @@
                 } else {
                     $node = new Node($data);
                     $current = $this->head;
-                    $cd = 0;
-                    while ($cd < $index) {
+                    $counter = 0;
+                    while ($counter < $index) {
                         $previous = $current;
-                        $cd++;
+                        $counter++;
                         $current = $previous->next;         // idk why its red but it still works
                     }
                     $previous->next = $node;
                     $node->next = $current;
                     $this->count++;
                 }
+            }
+            public function getIndex($index) {
+                if ($index > 0 && $index > $this->count) {
+                    return;
+                } else {
+                    $current = $this->head;
+                    $counter = 0;
+                    while($current) {
+                        if ($counter == $index) {
+                            echo $current->data;
+                        }
+                        $current = $current->next;
+                        $counter++;
+                    }
+                }
+            }
+            public function removeIndex($index) {
+                $current = $this->head;
+                $counter = 0;
+                if ($index > 0 && $index > $this->count) {
+                    return;
+                } else if ($index === 0) {
+                    $this->head = $current->next;
+                } else {
+                    while ($counter < $index) {
+                        $previous = $current;
+                        $counter++;
+                        $current = $previous->next;         // idk why its red but it still works
+                    }
+                    $previous->next = $current->next;
+                    $this->count--;
+                }
+            }
+            public function removeLast() {
+                $current = $this->head;
+                if (!$current->next) {
+                    $this->head = null;
+                }
+                while ($current->next->next) {
+                    $current = $current->next;
+                }
+                $current->next = null;
+                $this->count--;
             }
             public function printList() {
                 $current = $this->head;
@@ -255,8 +298,8 @@
         $list1->insertFirst(200);
         $list1->insertLast(300);
         $list1->insertIndex(400,1);
-        $list1->insertIndex(500,2);
-        echo $list1->printList();
+        $list1->removeLast();
+        echo $list1->printList().'<br>';
     ?>
 </body>
 </html>
