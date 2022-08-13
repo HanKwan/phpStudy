@@ -143,8 +143,11 @@
         // for loop
         $hay = ['some', null, 'n', 1, 2];
         // echo 'found n at position ' . array_search('n', $hay) . '<br>';
-        if (array_search('b', $hay) > 0) { echo 'true';} else {echo 'false';};
-
+        // if (in_array('n', $hay)) {
+        //     echo 'true';
+        // } else {
+        //     echo 'false';
+        // }
         
         //function + sum
         function sum(...$nums){
@@ -306,6 +309,52 @@
         $list1->insertIndex(400,1);
         $list1->removeLast();
         echo $list1->printList().'<br>';
+
+        // stack
+        class Stack {
+            public $stack;
+            public $count;
+            public function __construct() {
+                $this->stack = [];
+                $this->count = -1;
+            }
+            public function push($value) {
+                $this->stack[$this->count] = $value;
+                $this->count++;
+                echo $value . ' has been added to position ' . $this->count . '<br>';
+            }
+            public function pop() {
+                if ($this->count < 0) {
+                    echo 'The stack is empty';
+                } else {
+                    $delete = $this->stack[$this->count];
+                    echo $delete . ' has been popped <br>';
+                    $this->count--;         // the remove magic happened here
+                    // return $delete;
+                }
+            }
+            public function peek() {
+                echo $this->stack[$this->count - 1] . ' is at the top <br>';
+                return $this->stack[$this->count - 1];
+            }
+            public function printall() {
+                // $str = '';
+                if ($this->count > -1) {
+                    for ($i = -1; $i < $this->count; $i++) {
+                        echo $str = $this->stack[$i] . ' ';
+                    }
+                    // return $str;
+                } else {
+                    echo 'The stack is empty';
+                }
+            }
+        }
+        $stck = new Stack();
+        $stck->push(10);
+        $stck->push(40);
+        $stck->peek();
+        $stck->pop();
+        $stck->printall()
     ?>
 </body>
 </html>
