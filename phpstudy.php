@@ -139,6 +139,12 @@
                 echo $person.'<br>';
             }
         }
+
+        // for loop
+        $hay = ['some', null, 'n', 1, 2];
+        // echo 'found n at position ' . array_search('n', $hay) . '<br>';
+        if (array_search('b', $hay) > 0) { echo 'true';} else {echo 'false';};
+
         
         //function + sum
         function sum(...$nums){
