@@ -354,7 +354,61 @@
         $stck->push(40);
         $stck->peek();
         $stck->pop();
-        $stck->printall()
+        // $stck->printall();
+
+        // queueing
+        class Queue {
+            public $front;
+            public $back;
+            public $count;
+            public function __construct() {
+                $this->front = null;
+                $this->back = null;
+                $this->count = 0;
+            }
+            public function enqueue($data) {
+                $node = new Node($data);
+                if (!$this->front) {
+                    $this->front = $this->back = $node;
+                } else {
+                    $this->back->next = $node;
+                    $this->back = $node;
+                }
+                $this->count++;
+            }
+            public function dequeue() {
+                $tmp = $this->front;
+                if (!$tmp) {
+                    echo "Empty Queue";
+                } elseif ($tmp && !$tmp->next) {
+                    $this->front = null;                    
+                    $this->back = null;
+                } else {
+                    $this->front = $tmp->next;
+                    // $this->front->next= null;        // will result front.next = null but still hv this.back (wont make sense)
+                }
+                $this->count--;
+                return $tmp;
+            }
+            public function print() {
+                // echo $this->count;
+                if (!$this->front) {
+                    echo "The queue is empty";
+                } else {
+                    while ($this->front) {
+                        echo $this->front->data . ' ';
+                        $this->front = $this->front->next;
+                    }
+                }
+            }
+        }
+        $que = new Queue();
+        $que->enqueue(10);
+        $que->enqueue(20);
+        $que->enqueue(30);
+        $que->dequeue();
+        $que->print();
+        // var_dump($que);
     ?>
 </body>
 </html>
