@@ -300,15 +300,31 @@
                     echo 'The list is empty';
                 }
             }
+            public function reverseList() {
+                $pre = null;
+                $current = $this->head;
+                while ($current) {
+                    $next = $current->next;
+                    $this->tail = $next;
+                    $current->next = $pre;
+                    $pre = $current;
+                    $current = $next;
+                }
+                return $this->head = $pre;
+            }
         }
 
         $list1 = new Linkedlist();
         $list1->insertFirst(100);
         $list1->insertFirst(200);
-        $list1->insertLast(300);
+        $list1->insertFirst(300);
         $list1->insertIndex(400,1);
-        $list1->removeLast();
+        // $list1->removeLast();
         echo $list1->printList().'<br>';
+        $list1->reverseList();
+        echo $list1->printList().'<br>';
+        // var_dump($list1);
+
 
         // stack
         class Stack {
