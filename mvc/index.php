@@ -5,8 +5,8 @@
     // planing out first
     $app = new Application();
 
-    // $app->router->get('/', function() {
-    //     return 'hello';
-    // });
+    $app->router->get('/', function() {
+        return 'hello';
+    });
 
     $app->run();

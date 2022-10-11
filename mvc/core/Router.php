@@ -17,8 +17,7 @@
 
         // filter out the path
         public function resolve() {
-            var_dump($_SERVER);
-            // $this->request->getPath();
-            // $this->request->getMethod();
+            $path = $this->request->getPath();
+            $method = $this->request->getMethod();
         }
     }
