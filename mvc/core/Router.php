@@ -25,11 +25,15 @@
                 return 'Not found';
             }
 
-            // will 
+            // join router and views
             if (is_string($callback)) {
-
+                return $this->vendorView($callback);
             }
 
             return call_user_func($callback);
+        }
+
+        public function vendorView($view) {
+            include_once __DIR__."/../views/$view.php";
         }
     }
