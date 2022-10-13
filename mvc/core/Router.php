@@ -27,13 +27,13 @@
 
             // join router and views
             if (is_string($callback)) {
-                return $this->vendorView($callback);
+                return $this->venderView($callback);
             }
 
             return call_user_func($callback);
         }
 
-        public function vendorView($view) {
+        public function venderView($view) {
             include_once __DIR__."/../views/$view.php";
         }
     }
