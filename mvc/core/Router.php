@@ -33,7 +33,7 @@
             return call_user_func($callback);
         }
 
-        public function venderView($view) {
+        public function venderView($view) {                 // $view is callback
             include_once __DIR__."/../views/$view.php";
         }
     }
