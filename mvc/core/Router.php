@@ -34,6 +34,12 @@
         }
 
         public function venderView($view) {                 // $view is callback
-            include_once __DIR__."/../views/$view.php";
+            $layoutContent = $this->layoutContent();
+            include_once Application::$ROOT_DIR."/views/$view.php";
+        }
+
+        // load page from layouts
+        public function layoutContent() {
+            include_once Application::$ROOT_DIR."/views/layouts/main.php";
         }
     }
