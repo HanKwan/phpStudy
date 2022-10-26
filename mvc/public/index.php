@@ -6,5 +6,7 @@
     $app = new Application(dirname(__DIR__));
 
     $app->router->get('/', 'home');
+    $app->router->get('/home', 'home');
+    $app->router->get('/contact', 'contact');
 
     $app->run();
