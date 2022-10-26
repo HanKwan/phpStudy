@@ -27,19 +27,19 @@
 
             // join router and views
             if (is_string($callback)) {
-                return $this->venderView($callback);
+                return $this->renderView($callback);
             }
 
             return call_user_func($callback);
         }
 
-        public function venderView($view) {                 // $view is callback
+        public function renderView($view) {                 // $view is callback
             $layoutContent = $this->layoutContent();
             include_once Application::$ROOT_DIR."/views/$view.php";
         }
 
         // load page from layouts
-        public function layoutContent() {
+        protected function layoutContent() {
             include_once Application::$ROOT_DIR."/views/layouts/main.php";
         }
     }
