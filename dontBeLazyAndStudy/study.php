@@ -11,7 +11,13 @@
         <input type="number" name="num1">
         <input type="text" name="opt">
         <input type="number" name="num2">
-        <input type="submit">
+        <button type="submit">=</button>
+    </form>
+
+    <form action="study.php" method="post">
+        <h4>associative arr</h4>
+        <input type="text" name="wName" value="<?php echo $_POST['wName'] ?>">
+        <button type="submit">Search</button>
     </form>
 
     <?php
@@ -27,6 +33,10 @@
         } else if ($opt === "/") {
             echo $num1 / $num2; 
         };
+
+        $workers = ['johnny' => '120k', 'mary' => '110k'];
+        $toLower = strtolower($_POST['wName']);
+        echo $workers[$toLower];
     ?>
 </body>
 </html>
