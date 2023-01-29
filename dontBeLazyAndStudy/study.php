@@ -35,14 +35,21 @@
         <h4>associative arr</h4>
         <input type="text" name="wName" value="<?php echo $_POST['wName'] ?>">
         <button type="submit">Search</button>
-    </form>
+    </form><br>
     
     <?php
         $workers = ['johnny' => '120k', 'mary' => '110k'];
         $toLower = strtolower($_POST['wName']);
         echo $workers[$toLower];
+
+        $person1 = [
+            'name' => 'Christ Joe',
+            'nickname' => 'Joe',
+            'age' => 26
+        ];
+        echo $person1['address'] ?: 'address unknown';
+        // what is the different between ?? and ?: 
     ?>
     
-
 </body>
 </html>
