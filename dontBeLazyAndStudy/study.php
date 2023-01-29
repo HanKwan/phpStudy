@@ -47,8 +47,18 @@
             'nickname' => 'Joe',
             'age' => 26
         ];
-        echo $person1['address'] ?: 'address unknown';
+        // echo $person1['address'] ?: 'address unknown';
         // what is the different between ?? and ?: 
+
+        // switch - case
+        $role = 'manager';
+        switch ($role) {
+            case 'manager': echo 'manager';
+            break;
+            case 'developer': echo 'developer';
+            break;
+            default: echo 'not found';
+        }
     ?>
     
 </body>
