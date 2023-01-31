@@ -76,6 +76,16 @@
                 echo implode(' => ', $employee). '<br>';
             } else echo $employee;
         }
+
+        // for loop
+        $hay = ['someone', 'null', 0, 'needle', 3, null];
+        echo 'needle found in position ' . array_search('needle', $hay) + 1 . '<br>';
+        for ($i = 0; $i < count($hay); $i++) {
+            // echo ' ' . $hay[$i];
+            if ($hay[$i] === 'needle') {
+                echo $hay[$i] . ' found in position ' . $i + 1;
+            }
+        }
     ?>
     
 </body>
