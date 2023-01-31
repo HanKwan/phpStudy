@@ -83,9 +83,18 @@
         for ($i = 0; $i < count($hay); $i++) {
             // echo ' ' . $hay[$i];
             if ($hay[$i] === 'needle') {
-                echo $hay[$i] . ' found in position ' . $i + 1;
+                echo $hay[$i] . ' found in position ' . $i + 1 . '<br>';
             }
         }
+
+        // sum function
+        function sumAll (...$nums) {
+            $total = 0;
+            foreach ($nums as $num) {
+                $total += $num;
+            } return $total;
+        }
+        echo sumAll(3, 4, 234, 656, 34);
     ?>
     
 </body>
