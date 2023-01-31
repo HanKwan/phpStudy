@@ -51,13 +51,30 @@
         // what is the different between ?? and ?: 
 
         // switch - case
-        $role = 'manager';
-        switch ($role) {
-            case 'manager': echo 'manager';
-            break;
-            case 'developer': echo 'developer';
-            break;
-            default: echo 'not found';
+        // $role = 'manager';
+        // switch ($role) {
+        //     case 'manager': echo 'manager';
+        //     break;
+        //     case 'developer': echo 'developer';
+        //     break;
+        //     default: echo 'not found';
+        // }
+
+        // for each loop
+        $employees = [
+            'employee1' => [
+                'name' => 'Jame',
+                'role' => 'manager'
+            ],
+            'employee2' => [
+                'name' => 'Mary',
+                'role' => 'marketing'
+            ]
+        ];
+        foreach ($employees as $employee) {
+            if (is_array($employee)) {
+                echo implode(' => ', $employee). '<br>';
+            } else echo $employee;
         }
     ?>
     
