@@ -15,6 +15,15 @@
         <button type="submit">=</button>
     </form>
     <?php 
+        // $pdo = new PDO('mysql:host=localhost;dbname=example', 'root', 'password');
+        // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // $stmt = $pdo->prepare('SELECT * from tablename');
+        // $stmt->execute();
+        // $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // foreach ($results as $result) {
+        //     echo $result->result_name;
+        // };
+
         $num1 = $_POST['num1'];
         $opt = $_POST['opt'];
         $num2 = $_POST['num2'];
