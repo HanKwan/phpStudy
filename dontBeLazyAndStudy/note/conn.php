@@ -13,6 +13,13 @@ class Connection {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function addNote() {
+        $stmt = $this->pdo->prepare('INSERT INTO notes (title, body) VALUES (:title, :body)');
+        $stmt->bindValue(':title', $_POST['title']);
+        $stmt->bindValue(':body', $_POST['body']);
+        return $stmt->execute();
+    }
 }
 
 return $connection = new Connection;
