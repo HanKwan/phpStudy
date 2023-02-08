@@ -1,5 +1,9 @@
 <?php
     $connection = require_once './conn.php';
+    $error = '';
+    if ($connection->sendError()) {
+        $error = $connection->sendError();
+    }
     $notes = $connection->getAllNotes();
 ?>
 
@@ -17,6 +21,9 @@
     <div class="d-flex justify-content-center">
         <div class="container mt-5 row justify-content-center">
             <div class="col-4">
+                <?php if ($error): ?>
+                    <div class="alert alert-danger"><?php echo $error ?></div>
+                <?php endif; ?>
                 <form action="add.php" method="post" class="d-flex flex-column align-items-center">
                     <input type="text" name="title" class="border-1 mb-2 w-100" placeholder="Note title">
                     <textarea name="body" class="mb-3 w-100" cols="10" rows="3" placeholder="About"></textarea>

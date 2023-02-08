@@ -20,6 +20,10 @@ class Connection {
         $stmt->bindValue(':body', $_POST['body']);
         return $stmt->execute();
     }
+
+    public function sendError() {
+        return 'Text cannot be empty';
+    }
 }
 
 return $connection = new Connection;
