@@ -36,7 +36,15 @@
             <div class="col-4">
                 <?php foreach($notes as $note): ?>
                     <div class="rounded mb-3 bg-warning pb-1 pt-3 px-2">
-                        <h5 class="mb-2"><?php echo $note['title'] ?></h5> 
+                        <div class="d-flex justify-content-between">
+                            <a href="?id=<?php echo $note['id'] ?>" class="text-decoration-none text-dark">
+                                <h5 class="mb-2"><?php echo $note['title'] ?></h5>
+                            </a> 
+                            <form action="delete.php" method="post">
+                                <input type="hidden" value="<?php echo $note['id'] ?>" name="deleteId">
+                                <button class="border-0 bg-warning">x</button>
+                            </form>
+                        </div>
                         <p><?php echo $note['body'] ?></p> 
                     </div>
                 <?php endforeach; ?>        

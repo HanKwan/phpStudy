@@ -24,6 +24,12 @@ class Connection {
     public function sendError() {
         return 'Text cannot be empty';
     }
+
+    public function deleteNote($id) {
+        $stmt = $this->pdo->prepare('DELETE FROM notes WHERE id = :id');
+        $stmt->bindValue(':id', $id);
+        return $stmt->execute();
+    }
 }
 
 return $connection = new Connection;
