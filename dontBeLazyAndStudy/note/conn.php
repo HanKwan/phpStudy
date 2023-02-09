@@ -30,6 +30,13 @@ class Connection {
         $stmt->bindValue(':id', $id);
         return $stmt->execute();
     }
+
+    public function getNote($id) {
+        $stmt = $this->pdo->prepare('SELECT * FROM notes WHERE id = :id');
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 return $connection = new Connection;

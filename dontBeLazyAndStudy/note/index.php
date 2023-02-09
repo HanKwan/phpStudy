@@ -2,6 +2,15 @@
     $connection = require_once './conn.php';
     $notes = $connection->getAllNotes();
     $error = 'Text cannot be empty';
+
+    $currentNote = [
+        'id' => '',
+        'tilte' => '',
+        'body' => ''
+    ];
+    if ($_GET['id']) {
+        $currentNote = $connection->getNote($_GET['id']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +31,16 @@
                     <div class="alert alert-danger"><?php echo $error ?></div>
                 <?php endif; ?>
                 <form action="add.php" method="post" class="d-flex flex-column align-items-center">
-                    <input type="text" name="title" class="border-1 mb-2 w-100" placeholder="Note title">
-                    <textarea name="body" class="mb-3 w-100" cols="10" rows="3" placeholder="About"></textarea>
-                    <button class="btn-sm btn btn-primary w-50">Add note</button>
+                    <input type="hidden" name="id" value="<?php echo $currentNote['id'] ?>">
+                    <input type="text" name="title" value="<?php echo $currentNote['title'] ?>" class="border-1 mb-2 w-100" placeholder="Note title">
+                    <textarea name="body" class="mb-3 w-100" cols="10" rows="3" placeholder="About"><?php echo $currentNote['body'] ?></textarea>
+                    <button class="btn-sm btn btn-primary w-50">
+                        <?php if ($currentNote['id']): ?>
+                            Update Note
+                        <?php else: ?>
+                            Add note
+                        <?php endif; ?>
+                    </button>
                 </form> 
             </div>
         </div>
