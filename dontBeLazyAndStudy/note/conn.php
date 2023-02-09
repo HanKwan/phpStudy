@@ -37,6 +37,14 @@ class Connection {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function update($updatedNote) {
+        $stmt = $this->pdo->prepare('UPDATE notes SET title = :title, body = :body WHERE id = :id');
+        $stmt->bindValue(':id', $updatedNote['id']);
+        $stmt->bindValue(':title', $updatedNote['title']);
+        $stmt->bindValue(':body', $updatedNote['body']);
+        return $stmt->execute();
+    }
 }
 
 return $connection = new Connection;
